@@ -1,0 +1,23 @@
+Handle,Title,Body (HTML),Type,Tags,Status,Option1 Name,Option1 Value,Variant SKU,Variant Price,Currency,Variant Inventory Tracker,Variant Inventory Qty
+membership,Monthly membership,"Monthly plan at Pinnacle Fitness. Sessions reset on the 1st of each month.",SERVICE,"membership,plans",active,Plan,8 Sessions,PLAN-PT-8,700.00,TTD,,
+membership,,,,,,Plan,12 Sessions,PLAN-PT-12,900.00,TTD,,
+membership,,,,,,Plan,Unlimited,PLAN-UNLIMITED,1000.00,TTD,,
+membership,,,,,,Plan,Open Gym Unlimited,PLAN-OG-UNLIMITED,450.00,TTD,,
+membership,,,,,,Plan,Open Gym add-on,PLAN-OG-ADDON,150.00,TTD,,
+pt-sessions,PT session packs,"Coached small-group personal training with Nasyir or Matthew. Packs expire 30 days after purchase.",SERVICE,"packs,personal-training",active,Sessions,1 session,PASS-PT-1,120.00,TTD,,
+pt-sessions,,,,,,Sessions,5 sessions,PASS-PT-5,550.00,TTD,,
+pt-sessions,,,,,,Sessions,10 sessions,PASS-PT-10,1000.00,TTD,,
+pt-sessions,,,,,,Sessions,20 sessions,PASS-PT-20,1800.00,TTD,,
+open-gym-visits,Open gym visits,"Use the floor during opening hours. Scan in at the door. Visits expire 30 days after purchase.",SERVICE,"packs,open-gym",active,Visits,1 visit,PASS-OG-1,75.00,TTD,,
+open-gym-visits,,,,,,Visits,5 visits,PASS-OG-5,325.00,TTD,,
+open-gym-visits,,,,,,Visits,10 visits,PASS-OG-10,600.00,TTD,,
+open-gym-visits,,,,,,Visits,20 visits,PASS-OG-20,1000.00,TTD,,
+water,Water,"Bottled water from the fridge.",FOOD,"fridge,drinks",active,,,FRIDGE-WATER,10.00,TTD,shopify,24
+lucozade,Lucozade,"Lucozade energy drink from the fridge.",FOOD,"fridge,drinks",active,,,FRIDGE-LUCOZADE,15.00,TTD,shopify,24
+gatorade,Gatorade,"Gatorade sports drink from the fridge.",FOOD,"fridge,drinks",active,,,FRIDGE-GATORADE,15.00,TTD,shopify,24
+lean-body-shake,Lean Body protein shake,"Ready-to-drink Lean Body protein shake.",FOOD,"fridge,protein",active,Flavour,Vanilla,FRIDGE-LEANBODY-VAN,35.00,TTD,shopify,12
+lean-body-shake,,,,,,Flavour,Chocolate,FRIDGE-LEANBODY-CHOC,35.00,TTD,shopify,12
+ghost-pre-workout,Ghost pre-workout,"Single-serve Ghost pre-workout.",FOOD,"fridge,pre-workout",active,Flavour,Iced Tea Lemonade,FRIDGE-GHOST-ITL,20.00,TTD,shopify,12
+ghost-pre-workout,,,,,,Flavour,Blue Raspberry,FRIDGE-GHOST-BLUE,20.00,TTD,shopify,12
+bloom-pre-workout,Bloom pre-workout,"Single-serve Bloom pre-workout.",FOOD,"fridge,pre-workout",active,Flavour,Strawberry Watermelon,FRIDGE-BLOOM-STRAW,20.00,TTD,shopify,12
+bloom-pre-workout,,,,,,Flavour,Crisp Apple,FRIDGE-BLOOM-APPLE,20.00,TTD,shopify,12
