@@ -3,26 +3,32 @@ import { cn } from '@/lib/utils'
 interface WordmarkProps {
   width?: number
   className?: string
-  variant?: 'wordmark' | 'icon' | 'stacked'
-  /** Set to true when the logo sits on a dark background so the PNG is inverted to white */
-  dark?: boolean
 }
 
-export default function Wordmark({
-  width = 160,
-  className,
-  dark = false,
-}: WordmarkProps) {
-  const height = Math.round(width * 0.28)
+// Pinnacle wordmark (public/pinnacle-logo.svg): the mark over PINNACLE
+// FITNESS. Black on transparent, so it is drawn through a CSS mask and
+// takes the current text colour. Defaults to ice; pass text-* to change.
+const WORDMARK_RATIO = 1505 / 3143
+
+export default function Wordmark({ width = 160, className }: WordmarkProps) {
+  const height = Math.round(width * WORDMARK_RATIO)
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/pinnacle-logo-transparent.png"
-      alt="Pinnacle Fitness"
-      width={width}
-      height={height}
-      className={cn('select-none', className)}
-      style={dark ? { filter: 'brightness(0) invert(1)' } : undefined}
+    <span
+      role="img"
+      aria-label="Pinnacle Fitness"
+      className={cn('block select-none bg-current text-ice', className)}
+      style={{
+        width,
+        height,
+        maskImage: 'url(/pinnacle-logo.svg)',
+        WebkitMaskImage: 'url(/pinnacle-logo.svg)',
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+        maskSize: 'contain',
+        WebkitMaskSize: 'contain',
+        maskPosition: 'center',
+        WebkitMaskPosition: 'center',
+      }}
     />
   )
 }

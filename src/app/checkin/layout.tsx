@@ -39,7 +39,7 @@ export default async function CheckinLayout({
           style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
         >
           <Link href={device ? '/checkin' : '/'}>
-            <Wordmark width={120} dark />
+            <Wordmark width={100} />
           </Link>
           <div className="flex items-center gap-3">
             {device ? (

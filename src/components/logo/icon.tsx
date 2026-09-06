@@ -1,27 +1,39 @@
 import { cn } from '@/lib/utils'
 
-interface IconProps extends React.SVGProps<SVGSVGElement> {
+interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   size?: number
 }
 
-// Pinnacle mark: a peak with a flag planted on it. Placeholder geometry
-// until the real logo file arrives — keep the API stable.
-export default function Icon({ size = 32, className, ...props }: IconProps) {
+// Pinnacle mark (public/pinnacle-mark.svg): a peak with a flag planted
+// on it. The file is black on transparent, so it is drawn through a CSS
+// mask and takes the current text colour — text-ice, text-turf, etc.
+const MARK_RATIO = 696 / 1253
+
+export default function Icon({
+  size = 32,
+  className,
+  style,
+  ...props
+}: IconProps) {
   return (
-    <svg
-      viewBox="0 0 64 64"
-      width={size}
-      height={size}
-      className={cn('inline-block', className)}
-      aria-hidden="true"
+    <span
+      role="img"
+      aria-label="Pinnacle Fitness"
+      className={cn('inline-block shrink-0 bg-current', className)}
+      style={{
+        width: Math.round(size * MARK_RATIO),
+        height: size,
+        maskImage: 'url(/pinnacle-mark.svg)',
+        WebkitMaskImage: 'url(/pinnacle-mark.svg)',
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+        maskSize: 'contain',
+        WebkitMaskSize: 'contain',
+        maskPosition: 'center',
+        WebkitMaskPosition: 'center',
+        ...style,
+      }}
       {...props}
-    >
-      <path
-        fill="currentColor"
-        d="M32 14 6 56h52L32 14Zm0 12.5L47 50H17l15-23.5Z"
-      />
-      <path fill="currentColor" d="M31 4h2v14h-2z" />
-      <path fill="currentColor" d="M33 5h13l-4 4 4 4H33z" />
-    </svg>
+    />
   )
 }

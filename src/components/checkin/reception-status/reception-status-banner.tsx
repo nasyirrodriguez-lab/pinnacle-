@@ -72,7 +72,7 @@ export function ReceptionStatusBannerView({
                   : 'w-16 h-16 md:w-20 md:h-20 rounded-full bg-darkOrange-100 text-darkOrange-700 flex items-center justify-center shrink-0'
               }
             >
-              <Icon className="w-8 h-8 md:w-10 md:h-10" />
+              <Icon size={36} />
             </span>
             <div className="min-w-0">
               <p
