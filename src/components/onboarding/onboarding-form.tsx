@@ -6,7 +6,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import SelfieCapture from '@/components/selfie-capture/selfie-capture'
 import TermsContent from '@/components/terms/terms-content'
-import { completeOnboarding, type Goal } from '@/app/welcome/actions'
+import { completeOnboarding } from '@/app/welcome/actions'
+import type { Goal } from '@/lib/onboarding/goals'
 
 // Nike-style onboarding: one question per full-screen step, a counter
 // top-right, Skip on the left where a step is optional, a turf arrow
@@ -46,9 +47,7 @@ export default function OnboardingForm({
   const [phone, setPhone] = useState(defaultPhone)
   const [goal, setGoal] = useState<Goal | null>(null)
   const [notes, setNotes] = useState('')
-  const [coach, setCoach] = useState<'nasyir' | 'matthew' | 'none' | null>(
-    null
-  )
+  const [coach, setCoach] = useState<'nasyir' | 'matthew' | 'none' | null>(null)
   const [pin, setPin] = useState('')
   const [pinConfirm, setPinConfirm] = useState('')
   const [accepted, setAccepted] = useState(false)
@@ -78,7 +77,9 @@ export default function OnboardingForm({
         setSelfieDone(true)
         setShowCamera(false)
       } else {
-        setError('Could not save your photo — you can add it later in Settings.')
+        setError(
+          'Could not save your photo — you can add it later in Settings.'
+        )
       }
     } finally {
       setSelfieBusy(false)
@@ -179,7 +180,9 @@ export default function OnboardingForm({
                   onClick={() => setShowCamera(true)}
                   className="w-full h-12 rounded-full border border-border text-sm text-ice-dim hover:text-ice hover:border-ice transition"
                 >
-                  {selfieDone ? '✓ Photo saved · retake' : 'Add a photo (optional)'}
+                  {selfieDone
+                    ? '✓ Photo saved · retake'
+                    : 'Add a photo (optional)'}
                 </button>
               )}
             </div>
@@ -220,7 +223,9 @@ export default function OnboardingForm({
                     >
                       {on && <Check size={12} />}
                     </span>
-                    <span className="block font-heading text-base">{g.title}</span>
+                    <span className="block font-heading text-base">
+                      {g.title}
+                    </span>
                     <span className="block text-xs text-ice-dim mt-1">
                       {g.body}
                     </span>
@@ -267,9 +272,21 @@ export default function OnboardingForm({
           >
             <div className="flex flex-col gap-3 max-w-md">
               {[
-                { id: 'nasyir' as const, name: 'Nasyir', body: 'Strength & conditioning' },
-                { id: 'matthew' as const, name: 'Matthew', body: 'Programming & structure' },
-                { id: 'none' as const, name: 'No preference', body: 'Put me where there’s space' },
+                {
+                  id: 'nasyir' as const,
+                  name: 'Nasyir',
+                  body: 'Strength & conditioning',
+                },
+                {
+                  id: 'matthew' as const,
+                  name: 'Matthew',
+                  body: 'Programming & structure',
+                },
+                {
+                  id: 'none' as const,
+                  name: 'No preference',
+                  body: 'Put me where there’s space',
+                },
               ].map((c) => {
                 const on = coach === c.id
                 return (
@@ -284,7 +301,11 @@ export default function OnboardingForm({
                     }
                   >
                     <span className="font-heading">{c.name}</span>
-                    <span className={on ? 'text-xs opacity-70' : 'text-xs text-ice-mute'}>
+                    <span
+                      className={
+                        on ? 'text-xs opacity-70' : 'text-xs text-ice-mute'
+                      }
+                    >
                       {c.body}
                     </span>
                   </button>

@@ -8,9 +8,9 @@ import { createAdminClient } from '@/utils/supabase/admin'
 import { CURRENT_TERMS_VERSION } from '@/config/terms'
 import { attributeReferral } from '@/lib/referrals/attribute'
 import { clearReferralCookie, readReferralCookie } from '@/lib/referrals/cookie'
+import { GOALS } from '@/lib/onboarding/goals'
 
-export const GOALS = ['strength', 'lean', 'performance', 'health'] as const
-export type Goal = (typeof GOALS)[number]
+export type { Goal } from '@/lib/onboarding/goals'
 
 const onboardingSchema = z.object({
   fullName: z.string().trim().min(1, 'Your name is required').max(120),
