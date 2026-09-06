@@ -6,13 +6,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/solutions',
-        destination: '/spaces',
+        source: '/spaces',
+        destination: '/pricing',
         permanent: true,
       },
       {
-        source: '/pricing',
-        destination: '/spaces',
+        source: '/solutions',
+        destination: '/pricing',
         permanent: true,
       },
     ]
