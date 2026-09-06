@@ -16,7 +16,7 @@ export const CONTACT = {
   email: 'hello@pinnaclefitness.app',
   domain: 'pinnaclefitness.app',
   siteUrl: 'https://pinnaclefitness.app',
-  instagram: 'https://www.instagram.com/pinnaclefitnesstt',
+  instagram: 'https://www.instagram.com/pinnaclefitnessandfootball',
   phones: [
     { name: 'Nasyir', display: '688-6887', tel: '+18686886887' },
     { name: 'Matthew', display: '724-5734', tel: '+18687245734' },

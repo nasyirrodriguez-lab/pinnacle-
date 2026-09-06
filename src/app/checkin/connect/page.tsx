@@ -22,8 +22,8 @@ const SOCIALS = [
   },
   {
     label: 'Instagram',
-    handle: '@pinnaclefitnesstt',
-    url: 'https://www.instagram.com/pinnaclefitnesstt',
+    handle: '@pinnaclefitnessandfootball',
+    url: 'https://www.instagram.com/pinnaclefitnessandfootball',
     icon: Instagram,
     tone: 'text-pink-600',
   },
