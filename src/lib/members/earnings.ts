@@ -9,6 +9,7 @@ import { parseTstzRange } from '@/lib/booking/slots'
 // Per-session value by plan. Unlimited members attribute at the
 // 12-Sessions rate — the owners' rule.
 const PLAN_SESSION_CENTS: Record<string, number> = {
+  'pt-4': 12500,
   'pt-8': 8750,
   'pt-12': 7500,
   unlimited: 7500,
@@ -126,7 +127,10 @@ export async function coachDelivery(
 }
 
 // AST month bounds as ISO instants.
-export function astMonthBounds(monthKey: string): { fromIso: string; toIso: string } {
+export function astMonthBounds(monthKey: string): {
+  fromIso: string
+  toIso: string
+} {
   const [y, m] = monthKey.split('-').map(Number)
   const next = new Date(Date.UTC(y, m, 1))
   const nextKey = `${next.getUTCFullYear()}-${String(next.getUTCMonth() + 1).padStart(2, '0')}`

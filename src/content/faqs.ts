@@ -15,7 +15,7 @@ const FAQS = [
     id: 'plans-and-packs',
     title: 'What’s the difference between a plan and a pack?',
     description:
-      'Monthly plans (8 Sessions, 12 Sessions, Unlimited) reset every month and are the cheapest way to train. Packs of 5, 10 or 20 sessions buy flexibility — they’re valid for 30 days from purchase. Both are booked and used the same way.',
+      'Monthly plans (4, 8 or 12 Sessions, or Unlimited) reset every month and are the cheapest way to train. Packs of 5, 10 or 20 sessions buy flexibility — they’re valid for 30 days from purchase. Both are booked and used the same way.',
   },
   {
     id: 'what-is-a-session',

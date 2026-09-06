@@ -21,8 +21,13 @@ on conflict (id) do nothing;
 -- =====================================================================
 insert into public.plans (id, name, description, price_cents, billing_period, features, includes_pt, pt_sessions_per_month, includes_open_gym, is_private, display_order)
 values
+  ('pt-4', '4 Sessions',
+   'One coached small-group session a week with Nasyir or Matthew. The lightest way in — a coach who knows your name, once a week, every week.',
+   50000, 'month',
+   '["4 coached sessions a month","One session a week","Book either coach","Sessions reset monthly"]'::jsonb,
+   true, 4, false, false, 5),
   ('pt-8', '8 Sessions',
-   'Eight coached small-group sessions a month with Nasyir or Matthew. Enough structure to stop guessing and start progressing — for people who already train and want a coach who knows their name.',
+   'Two coached small-group sessions a week with Nasyir or Matthew. Enough structure to stop guessing and start progressing — for people who already train and want a coach who knows their name.',
    70000, 'month',
    '["8 coached sessions a month","Book either coach","Sessions reset monthly","Open gym available as an add-on"]'::jsonb,
    true, 8, false, false, 10),
@@ -38,7 +43,7 @@ values
    true, null, true, false, 30),
   ('open-gym-unlimited', 'Open Gym Unlimited',
    'For the self-directed member who already has a program. The floor, the turf and the racks whenever the gym is open and there is room. No coaching included.',
-   45000, 'month',
+   50000, 'month',
    '["Unlimited open gym","Scan in at the door","No coached sessions"]'::jsonb,
    false, 0, true, false, 40),
   ('open-gym-addon', 'Open Gym add-on',

@@ -1,8 +1,9 @@
 Handle,Title,Body (HTML),Type,Tags,Status,Option1 Name,Option1 Value,Variant SKU,Variant Price,Currency,Variant Inventory Tracker,Variant Inventory Qty
-membership,Monthly membership,"Monthly plan at Pinnacle Fitness. Sessions reset on the 1st of each month.",SERVICE,"membership,plans",active,Plan,8 Sessions,PLAN-PT-8,700.00,TTD,,
+membership,Monthly membership,"Monthly plan at Pinnacle Fitness. Sessions reset on the 1st of each month.",SERVICE,"membership,plans",active,Plan,4 Sessions,PLAN-PT-4,500.00,TTD,,
+membership,,,,,,Plan,8 Sessions,PLAN-PT-8,700.00,TTD,,
 membership,,,,,,Plan,12 Sessions,PLAN-PT-12,900.00,TTD,,
 membership,,,,,,Plan,Unlimited,PLAN-UNLIMITED,1000.00,TTD,,
-membership,,,,,,Plan,Open Gym Unlimited,PLAN-OG-UNLIMITED,450.00,TTD,,
+membership,,,,,,Plan,Open Gym Unlimited,PLAN-OG-UNLIMITED,500.00,TTD,,
 membership,,,,,,Plan,Open Gym add-on,PLAN-OG-ADDON,150.00,TTD,,
 pt-sessions,PT session packs,"Coached small-group personal training with Nasyir or Matthew. Packs expire 30 days after purchase.",SERVICE,"packs,personal-training",active,Sessions,1 session,PASS-PT-1,120.00,TTD,,
 pt-sessions,,,,,,Sessions,5 sessions,PASS-PT-5,550.00,TTD,,

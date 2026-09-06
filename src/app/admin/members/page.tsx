@@ -16,6 +16,7 @@ export const dynamic = 'force-dynamic'
 
 const PLAN_OPTIONS = [
   { value: '', label: 'All plans' },
+  { value: 'pt-4', label: '4 Sessions' },
   { value: 'pt-8', label: '8 Sessions' },
   { value: 'pt-12', label: '12 Sessions' },
   { value: 'unlimited', label: 'Unlimited' },
@@ -173,8 +174,14 @@ async function loadMembers(
   ])
 
   const ptLeftByUser = new Map<string, number>()
-  for (const row of (ledgerData as Array<{ user_id: string; delta: number }> | null) ?? []) {
-    ptLeftByUser.set(row.user_id, (ptLeftByUser.get(row.user_id) ?? 0) + row.delta)
+  for (const row of (ledgerData as Array<{
+    user_id: string
+    delta: number
+  }> | null) ?? []) {
+    ptLeftByUser.set(
+      row.user_id,
+      (ptLeftByUser.get(row.user_id) ?? 0) + row.delta
+    )
   }
 
   const planNameById = new Map<string, string>(

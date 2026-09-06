@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
   title: 'Memberships — Pinnacle Fitness',
   description:
-    'Monthly coached memberships from TT$700, PT packs of 5, 10 and 20 sessions, and open gym access at Pinnacle Fitness, Port of Spain. Membership by application.',
+    'Monthly coached memberships from TT$500, PT packs of 5, 10 and 20 sessions, and open gym access at Pinnacle Fitness, Port of Spain. Membership by application.',
 }
 
 interface CatalogItem {
@@ -35,6 +35,8 @@ interface CatalogItem {
 }
 
 const PLAN_BLURBS: Record<string, string> = {
+  'pt-4':
+    'One coached session a week, every week. The lightest way in: a coach who knows your name and a session built around where you are, without guessing the rest of your week.',
   'pt-8':
     'Eight coached sessions a month gives you the structure to stop guessing and start progressing. A coach who knows your name, your goals, and builds every session around getting you there.',
   'pt-12':
@@ -136,13 +138,7 @@ async function loadCatalog(): Promise<CatalogItem[]> {
   return items
 }
 
-function Card({
-  item,
-  signedIn,
-}: {
-  item: CatalogItem
-  signedIn: boolean
-}) {
+function Card({ item, signedIn }: { item: CatalogItem; signedIn: boolean }) {
   const href = signedIn
     ? item.kind === 'plan'
       ? `/subscribe/${item.id}`
@@ -307,8 +303,8 @@ export default async function PricingPage() {
         </p>
         {!signedIn && (
           <p className="mt-4 text-sm text-muted-foreground">
-            Membership is by application. Pick the plan you want, apply, and
-            you pay only once a coach has approved you.
+            Membership is by application. Pick the plan you want, apply, and you
+            pay only once a coach has approved you.
           </p>
         )}
       </Section>
