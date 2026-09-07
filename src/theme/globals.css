@@ -243,12 +243,10 @@
   --color-ring: var(--ring);
 
   /* Typography — Archivo everywhere; width + italic axes do the work */
-  --font-sans:
-    var(--font-archivo), -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Helvetica Neue', Arial, sans-serif;
-  --font-heading:
-    var(--font-archivo), -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Helvetica Neue', Arial, sans-serif;
+  --font-sans: var(--font-archivo), -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: var(--font-archivo), -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   /* Radius — pills for buttons, 22px cards (rounded-lg is the card radius) */
   --radius-sm: 0.5rem;
@@ -391,4 +389,24 @@
 
 .animate-slide-in-left {
   animation: slide-in-left 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Marketing entrance: words and lines rise into place. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[rise_1\.1s_cubic-bezier\(0\.16\,1\,0\.3\,1\)_both\],
+  .animate-\[rise_0\.9s_cubic-bezier\(0\.16\,1\,0\.3\,1\)_both\],
+  .animate-\[rise_0\.6s_cubic-bezier\(0\.16\,1\,0\.3\,1\)_both\] {
+    animation: none;
+  }
 }
