@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
   title: 'Memberships — Pinnacle Fitness',
   description:
-    'Monthly coached memberships from TT$500, PT packs of 5, 10 and 20 sessions, and open gym access at Pinnacle Fitness, Port of Spain. Membership by application.',
+    'Monthly coached memberships from TT$500 and open gym access at Pinnacle Fitness, Port of Spain. Membership by application.',
 }
 
 interface CatalogItem {
@@ -42,7 +42,7 @@ const PLAN_BLURBS: Record<string, string> = {
   'pt-12':
     'Three sessions a week, coached, consistent, and progressive. This is the plan where most people see their biggest shift. You stop waiting to feel motivated and just show up, because your coach and your community expect you to.',
   unlimited:
-    'For the fully committed. Unlimited coached sessions, open gym access, and priority booking. Your only job is to show up.',
+    'For the fully committed. Unlimited coached sessions and open gym access mean your only job is to show up.',
   'open-gym-unlimited':
     'Self-directed. The floor, the machines, the turf, whenever we are open — scan in, do the work.',
 }
@@ -88,7 +88,6 @@ async function loadCatalog(): Promise<CatalogItem[]> {
       discount_expires_at: (raw.discount_expires_at as string) ?? null,
     })
     const per = planPerSession(raw, p.effectiveCents)
-    const isOpenGym = !raw.pt_sessions_per_month && raw.includes_open_gym
     items.push({
       id: raw.id as string,
       kind: 'plan',
@@ -104,7 +103,11 @@ async function loadCatalog(): Promise<CatalogItem[]> {
       perSessionLabel: per?.label ?? null,
       features: Array.isArray(raw.features) ? (raw.features as string[]) : [],
       highlight: raw.id === 'pt-12',
-      group: isOpenGym ? 'open-gym' : 'membership',
+      // Group by whether the plan includes coaching, not by whether it
+      // has a fixed monthly session count. Previously "Unlimited" (no
+      // fixed count, includes open gym) was misfiled into the Open Gym
+      // group instead of sitting with the other coached memberships.
+      group: raw.includes_pt ? 'membership' : 'open-gym',
       order: (raw.display_order as number) ?? 0,
     })
   }
@@ -259,7 +262,9 @@ function Group({
       <div className="mb-8 max-w-2xl">
         <Eyebrow>{eyebrow}</Eyebrow>
         <Display>{title}</Display>
-        <p className="mt-4 text-muted-foreground leading-relaxed">{blurb}</p>
+        {blurb && (
+          <p className="mt-4 text-muted-foreground leading-relaxed">{blurb}</p>
+        )}
       </div>
       <div
         className={
@@ -284,11 +289,10 @@ export default async function PricingPage() {
   const memberships = items
     .filter((i) => i.group === 'membership')
     .sort((a, b) => a.order - b.order)
-  const ptPacks = items
-    .filter((i) => i.group === 'pt-pack')
-    .sort((a, b) => a.order - b.order)
+  // "Pay by the session" (PT packs) and the extra open-gym visit passes are
+  // retired from this page — Open Gym now shows only the Unlimited plan.
   const openGym = items
-    .filter((i) => i.group === 'open-gym')
+    .filter((i) => i.group === 'open-gym' && i.id === 'open-gym-unlimited')
     .sort((a, b) => a.order - b.order)
 
   return (
@@ -317,20 +321,12 @@ export default async function PricingPage() {
         signedIn={signedIn}
       />
       <Group
-        eyebrow="PT packs"
-        title="Pay by the session."
-        blurb="For members who train in bursts. Buy a pack, book with either coach, and use it within 30 days."
-        items={ptPacks}
-        signedIn={signedIn}
-        columns={4}
-      />
-      <Group
         eyebrow="Open gym"
         title="The floor, on your terms."
-        blurb="Scan in whenever we are open. The floor takes 20 people at a time, and the app shows you how many are on it before you leave home."
+        blurb=""
         items={openGym}
         signedIn={signedIn}
-        columns={openGym.length >= 4 ? 4 : 3}
+        columns={2}
       />
 
       {items.length === 0 && (
